@@ -86,6 +86,8 @@ Edge vs core architectures
 
 Hyperscaler design philosophies
 
+[Network Flight Recorder: From Local Diagnostic Tool to Cloud Operations Architecture](cloud/network-flight-recorder-architecture.md)
+
 **Folder: /cloud/**
 
 5. Design Principles
