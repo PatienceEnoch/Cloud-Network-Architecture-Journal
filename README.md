@@ -1,191 +1,83 @@
-Cloud Architect Journal of Patience Enoch
+<p align="center">
+  <img src="https://raw.githubusercontent.com/PatienceEnoch/PatienceEnoch/main/assets/profile-header.svg" alt="Patience Enoch — Cloud and Network Engineering" width="100%">
+</p>
 
-A living technical atlas of distributed systems, routing, cloud design, and the structural thinking of a modern cloud/network engineer.
+# Cloud Network Architecture Journal
 
-1. Core Concepts
+This is where I keep the ideas that stick after the lab is over.
 
-Fundamentals every architect must internalize:
+I use this journal to connect routing, cloud architecture, distributed systems, failure behavior, and observability back to things I can test. Some entries are concept notes. Others come directly from projects where I built a topology, broke a path, watched the control plane react, or changed an architecture after seeing where it failed.
 
-What a topology truly is (structure, not diagram)
+> **A backup path is architecture. Recovery time is behavior.**
 
-Loopbacks & identity
+## Current threads
 
-Control plane vs data plane
+### Routing and convergence
 
-Hop-by-hop state
+- [BGP Failover in a Three-AS Mini Internet](core/bgp-failover-and-timers.md)
+- [BGP Path Selection](core/bgp-path-selection.md)
+- [IGP vs BGP](core/igp-vs-bgp.md)
+- [SPF and Convergence](core/spf-and-convergence.md)
+- [Churn and Suppression](core/churn-and-suppression.md)
 
-Flooding, LSAs, LSDB
+These notes connect directly to my [Mini Internet](https://github.com/PatienceEnoch/mini-internet) lab, where I use FRRouting and Docker to watch BGP react to controlled link failures.
 
-What makes a “clean state”
+### Observability and failure
 
-Paths vs relationships
+- [Network Flight Recorder: From Local Diagnostic Tool to Cloud Operations Architecture](cloud/network-flight-recorder-architecture.md)
+- [Guarded Remediation: Verification Before Trust](cloud/guarded-remediation-and-rollback.md)
+- [Failure Domains and Local-First Observability](cloud/failure-domains-and-local-first-observability.md)
 
-Convergence, churn, suppression
+These grew out of [Network Flight Recorder](https://github.com/PatienceEnoch/network-flight-recorder), my local-first troubleshooting and incident-evidence project.
 
-**Folder: /core/**
+## What lives here
 
-2. Routing & Distributed Systems
+| Area | What I am studying |
+| --- | --- |
+| **Core networking** | topology, loopbacks, control vs data plane, adjacency, clean state |
+| **Routing** | BGP, OSPF, IS-IS, path selection, convergence, churn, anycast |
+| **Distributed systems** | state, consistency, CAP, failure domains, graceful degradation |
+| **Cloud architecture** | VPC design, NAT, segmentation, AWS operations, hybrid connectivity |
+| **Observability** | telemetry, evidence, incident lifecycle, network failure analysis |
+| **Design principles** | blast radius, least privilege, idempotence, verification, rollback |
 
-Deep dives into:
+## A few ideas I keep coming back to
 
-IS-IS & why hyperscalers prefer it
+- Loopbacks are identity, not just interfaces.
+- A clean routing table does not prove a clean data path.
+- Redundancy and convergence are different problems.
+- Metrics tell me that something happened; evidence helps explain why.
+- Observability should not disappear with the system it is observing.
+- A successful configuration change is not proof of successful recovery.
 
-OSPF
+## Where this is heading
 
-Tier 1 vs Tier 2 ISPs
+My next major networking work is hybrid cloud connectivity:
 
-Anycast vs Unicast
+~~~text
+Local routing lab
+      |
+   IPsec VPN
+      |
+     AWS
+      |
+Transit Gateway
+   /       \
+Dev VPC   Prod VPC
+      |
+Flow Logs / CloudWatch
+      |
+Network Flight Recorder
+~~~
 
-Why Anycast failover is unpredictable
+The goal is to keep building one connected body of work: routing fundamentals, hybrid connectivity, cloud segmentation, infrastructure as code, observability, and failure testing.
 
-Stateful TCP fragility at the edge
+## About the notes
 
-QUIC + stateless APIs
+This is a working engineering journal, not a polished textbook. I keep older ideas when they are useful, correct them when my understanding changes, and prefer tested observations over impressive-sounding claims.
 
-CAP theorem applied to networks
+I sometimes use AI tools as a thinking partner for organization or explanation. The labs, measurements, configurations, and conclusions I publish here are things I check against my own work and source material.
 
-Eventual consistency at the edge
+---
 
-Segment Routing (SR-MPLS, SRv6)
-
-[BGP Failover in a Three-AS Mini Internet](core/bgp-failover-and-timers.md)
-
-**Folder: /routing/**
-
-3. Network Analytics
-
-Includes:
-
-Flaps, churn, suppression
-
-How to read traceroutes like an SRE
-
-Interpreting convergence events
-
-Latency vs jitter vs loss
-
-LSDB change interpretation
-
-Telemetry as truth
-
-Patterns of network failure
-
-**Folder: /analytics/**
-
-4. Cloud Architecture
-
-VPC design patterns
-
-Subnetting strategies
-
-NAT patterns
-
-Multi-tier microservice blueprints
-
-Region, AZ, and failure-domain reasoning
-
-Edge vs core architectures
-
-Hyperscaler design philosophies
-
-[Network Flight Recorder: From Local Diagnostic Tool to Cloud Operations Architecture](cloud/network-flight-recorder-architecture.md)
-
-[Guarded Remediation: Verification Before Trust](cloud/guarded-remediation-and-rollback.md)
-
-[Failure Domains and Local-First Observability](cloud/failure-domains-and-local-first-observability.md)
-
-**Folder: /cloud/**
-
-5. Design Principles
-
-Reusable architectural heuristics:
-
-Simplicity vs flexibility
-
-Minimize state
-
-Blast radius isolation
-
-Designing for churn
-
-Graceful degradation
-
-Idempotent systems
-
-**Folder: /design/**
-
-6. Philosophies
-
-“gold nuggets":
-
-SPF doesn’t find paths — it finds relationships
-
-Loopbacks are identity, not interfaces
-
-Control planes hold truth, not routes
-
-“Networks are living systems”
-
-“Consistency is a choice; availability is a promise”
-
-“Topology is story, not geometry”
-
-**Folder: /philosophy/**
-
-7. Diagrams
-
-Visual maps for:
-
-Cloud architectures
-
-Routing flows
-
-TOR relay design
-
-VPC blueprints
-
-Distributed system diagrams
-
-**Folder: /diagrams/**
-
-8. Notes & References
-
-Reference materials like:
-
-PDFs
-
-External reading summaries
-
-Quotes
-
-Long-form notes
-
-**Folder: /notes/**
-
-9. Labs
-
-My hands-on architect portfolio:
-
-Tor Relay Engineering
-
-AWS VPC Blueprint
-
-Terraform VPC rebuild
-
-Splunk SOC investigations
-
-GNS3 routing labs
-
-Anycast experiments
-
-CAP theorem experiments
-
-**Folder: /labs/**
-
-**Commitment**
-
-This repo represents my transformation into a cloud architect. Every file is an intentional neural pathway I am building. Everything here has a purpose.
-
-**Discalimer** I use ChatGPT as a thinking partner to help me clarify concepts, structure my notes, and accelerate my learning process.
-All insights, interpretations, and architectural framing are my own.
-AI supports my productivity — it does not replace my original thought.
+[Main GitHub profile](https://github.com/PatienceEnoch) · [Portfolio](https://github.com/PatienceEnoch/Hopkins_portfolio)
