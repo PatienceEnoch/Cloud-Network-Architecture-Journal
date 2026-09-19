@@ -92,6 +92,8 @@ Hyperscaler design philosophies
 
 [Guarded Remediation: Verification Before Trust](cloud/guarded-remediation-and-rollback.md)
 
+[Failure Domains and Local-First Observability](cloud/failure-domains-and-local-first-observability.md)
+
 **Folder: /cloud/**
 
 5. Design Principles
