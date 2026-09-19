@@ -90,6 +90,8 @@ Hyperscaler design philosophies
 
 [Network Flight Recorder: From Local Diagnostic Tool to Cloud Operations Architecture](cloud/network-flight-recorder-architecture.md)
 
+[Guarded Remediation: Verification Before Trust](cloud/guarded-remediation-and-rollback.md)
+
 **Folder: /cloud/**
 
 5. Design Principles
