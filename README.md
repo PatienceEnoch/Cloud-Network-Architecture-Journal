@@ -48,6 +48,8 @@ Eventual consistency at the edge
 
 Segment Routing (SR-MPLS, SRv6)
 
+[BGP Failover in a Three-AS Mini Internet](core/bgp-failover-and-timers.md)
+
 **Folder: /routing/**
 
 3. Network Analytics
