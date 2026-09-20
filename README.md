@@ -22,6 +22,12 @@ I use this journal to connect routing, cloud architecture, distributed systems, 
 
 These notes connect directly to my [Mini Internet](https://github.com/PatienceEnoch/mini-internet) lab, where I use FRRouting and Docker to watch BGP react to controlled link failures.
 
+### Hybrid cloud networking
+
+- [Hybrid Site-to-Site VPN: Connecting a Routed Linux Lab to AWS](cloud/hybrid-site-to-site-vpn.md)
+
+This is the next layer of my [Ubuntu Virtual Network Lab](https://github.com/PatienceEnoch/Ubuntu-virtual-network-lab): strongSwan and IPsec on the local router, an AWS Virtual Private Gateway, static routing between `10.10.10.0/24` and `10.20.0.0/16`, and packet-level validation across the hybrid path.
+
 ### Observability and failure
 
 - [Network Flight Recorder: From Local Diagnostic Tool to Cloud Operations Architecture](cloud/network-flight-recorder-architecture.md)
@@ -49,10 +55,11 @@ These grew out of [Network Flight Recorder](https://github.com/PatienceEnoch/net
 - Metrics tell me that something happened; evidence helps explain why.
 - Observability should not disappear with the system it is observing.
 - A successful configuration change is not proof of successful recovery.
+- A running VPN service is not the same thing as an established tunnel.
 
 ## Where this is heading
 
-My next major networking work is hybrid cloud connectivity:
+My current hybrid-cloud work starts with a direct Site-to-Site VPN and grows from there:
 
 ~~~text
 Local routing lab
@@ -61,9 +68,9 @@ Local routing lab
       |
      AWS
       |
-Transit Gateway
-   /       \
-Dev VPC   Prod VPC
+Current VPC
+      |
+future multi-VPC / Transit Gateway work
       |
 Flow Logs / CloudWatch
       |
@@ -80,4 +87,4 @@ I sometimes use AI tools as a thinking partner for organization or explanation. 
 
 ---
 
-[Main GitHub profile](https://github.com/PatienceEnoch) · [Portfolio](https://github.com/PatienceEnoch/Hopkins_portfolio)
+[Main GitHub profile](https://github.com/PatienceEnoch) · [Portfolio](https://github.com/PatienceEnoch/Hopkins-portfolio)
