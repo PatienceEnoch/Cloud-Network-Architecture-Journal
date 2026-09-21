@@ -24,9 +24,12 @@ These notes connect directly to my [Mini Internet](https://github.com/PatienceEn
 
 ### Hybrid cloud networking
 
+- [Local Site-to-Site IPsec Validation](https://github.com/PatienceEnoch/Ubuntu-virtual-network-lab/blob/main/docs/local-site-to-site-ipsec-validation.md)
 - [Hybrid Site-to-Site VPN: Connecting a Routed Linux Lab to AWS](cloud/hybrid-site-to-site-vpn.md)
 
-This is the next layer of my [Ubuntu Virtual Network Lab](https://github.com/PatienceEnoch/Ubuntu-virtual-network-lab): strongSwan and IPsec on the local router, an AWS Virtual Private Gateway, static routing between `10.10.10.0/24` and `10.20.0.0/16`, and packet-level validation across the hybrid path.
+Before moving the path into AWS, I completed a local strongSwan-to-strongSwan version of the design. That gave me a controlled way to trace routing, NAT exemption, XFRM policy/state, return routing, packet capture, and reboot persistence end to end between `10.10.10.0/24` and a simulated cloud network at `10.20.0.0/24`.
+
+The AWS extension builds on the same troubleshooting model with a Virtual Private Gateway, Customer Gateway, VPC routing, security controls, and a real cloud workload.
 
 ### Observability and failure
 
