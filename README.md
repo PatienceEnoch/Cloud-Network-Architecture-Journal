@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="@@PROTECTED_0@@" alt="Patience Enoch, Cloud and Network Engineering" width="100%">
+  <img src="https://raw.githubusercontent.com/PatienceEnoch/PatienceEnoch/main/assets/profile-header.svg" alt="Patience Enoch, Cloud and Network Engineering" width="100%">
 </p>
 
 # Cloud Network Architecture Journal
